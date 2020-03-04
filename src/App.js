@@ -8,7 +8,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import axios from 'axios';
 import axiosMiddleware from 'redux-axios-middleware';
 
-import reducer from './reducer';
+import reducer from './reducerRepo';
 import RepoList from './RepoList';
 import RepoDetail from './RepoDetail';
 import Profile from './Profile';

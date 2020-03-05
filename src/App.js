@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Button } from 'react-native';
-import { createStore, applyMiddleware } from 'redux';
+import { createStore, applyMiddleware, compose } from 'redux';
 // import createStore from './Redux';
 import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
@@ -22,8 +22,10 @@ const client = axios.create({
   responseType: 'json',
 });
 
-const store = createStore(reducer, applyMiddleware(axiosMiddleware(client)));
-// const store = createStore();
+const enhancers = [];
+enhancers.push(applyMiddleware(axiosMiddleware(client)));
+enhancers.push(Reactotron.createEnhancer());
+const store = createStore(reducer, compose(...enhancers));
 
 const Tab = createBottomTabNavigator();
 function TabNavigator() {

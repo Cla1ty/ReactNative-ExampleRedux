@@ -1,4 +1,5 @@
 import Reactotron from 'reactotron-react-native';
+import reactotronSaga from 'reactotron-redux-saga';
 import { reactotronRedux } from 'reactotron-redux';
 
 const reactotron = Reactotron
@@ -6,6 +7,7 @@ const reactotron = Reactotron
   .configure() // controls connection & communication settings
   .useReactNative() // add all built-in react native plugins
   .use(reactotronRedux()) // add redux
+  .use(reactotronSaga())
   .connect(); // let's connect!
 
 export default reactotron;

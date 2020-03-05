@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Button } from 'react-native';
-import { createStore, applyMiddleware, compose } from 'redux';
-// import createStore from './Redux';
+// import { createStore, applyMiddleware, compose } from 'redux';
+import createStore from './Redux';
 import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -22,10 +22,11 @@ const client = axios.create({
   responseType: 'json',
 });
 
-const enhancers = [];
-enhancers.push(applyMiddleware(axiosMiddleware(client)));
-enhancers.push(Reactotron.createEnhancer());
-const store = createStore(reducer, compose(...enhancers));
+// const enhancers = [];
+// enhancers.push(applyMiddleware(axiosMiddleware(client)));
+// // enhancers.push(Reactotron.createEnhancer());
+// const store = createStore(reducer, compose(...enhancers));
+const store = createStore();
 
 const Tab = createBottomTabNavigator();
 function TabNavigator() {

@@ -14,6 +14,9 @@ import RepoList from './RepoList';
 import RepoDetail from './RepoDetail';
 import Profile from './Profile';
 
+import ReactotronConfig from './ReactotronConfig';
+import Reactotron from 'reactotron-react-native';
+
 const client = axios.create({
   baseURL: 'https://api.github.com',
   responseType: 'json',

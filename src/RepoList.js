@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { Text, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 
-import { listRepos } from './reducerRepo';
+import { Action } from './Redux/RepoRedux';
 
 class RepoList extends Component {
   componentDidMount() {
-    this.props.listRepos('relferreira');
+    this.props.getRepos('relferreira');
   }
 
   renderItem = ({ item }) => (
@@ -48,10 +48,36 @@ const mapStateToProps = state => {
     repos: storedRepositories,
   };
 };
-
+// const mapDispatchToProps = {
+//   getRepos: listRepos,
+// };
 const mapDispatchToProps = {
-  listRepos,
+  getRepos: data => Action.getRepos(data),
 };
+// const mapDispatchToProps = dispatch => ({
+//   getRepos: user =>
+//     dispatch(
+//       Action.getRepos({
+//         request: {
+//           url: `/users/${user}/repos`,
+//         },
+//       }),
+//     ),
+// });
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     getRepos: data => dispatch(Action.listRepos(data)),
+//   };
+// };
+
+function listRepos(user) {
+  console.log('LIST ' + user);
+  return Action.getRepos({
+    request: {
+      url: `/users/${user}/repos`,
+    },
+  });
+}
 
 export default connect(
   mapStateToProps,

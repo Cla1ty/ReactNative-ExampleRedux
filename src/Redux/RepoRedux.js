@@ -7,24 +7,27 @@ import Immutable from 'seamless-immutable';
 // export const GET_REPOS_FAIL = 'my-awesome-app/repos/LOAD_FAIL';
 const { Types, Creators } = createActions({
   getRepos: ['payload'],
-  getReposSuccess: ['respuesta'],
+  getReposSuccess: ['payload'],
   getReposFail: ['error'],
 });
+
+export const ReposTypes = Types;
+export const Action = Creators;
 
 // const initialState = {
 const INITIAL_STATE = Immutable({
   repos: [],
 });
 
-// function reducerRepos(state = initialState, action) {
-//   console.log('REDUCER ' + action.type);
-//   console.log('STATE ' + state.repos);
-//   console.log('STATE ' + Types.GET_REPOS);
+// function reducer(state = INITIAL_STATE, action) {
+//   console.log('===== REDUCER =====');
+//   console.log('STATE ' + action.type);
 //   switch (action.type) {
 //     case Types.GET_REPOS:
 //       return { ...state, loading: true };
 //     case Types.GET_REPOS_SUCCESS:
-//       return { ...state, loading: false, repos: action.payload.data };
+//       console.log(action.payload);
+//       return { ...state, loading: false, repos: action.payload };
 //     case Types.GET_REPOS_FAIL:
 //       return { ...state, loading: false, error: 'Error getting repos info' };
 //     default:
@@ -37,7 +40,7 @@ export const getRepos = (state, action) => {
 };
 
 export const getReposSuccess = (state, action) => {
-  return { ...state, loading: false, repos: action.payload.data };
+  return { ...state, loading: false, repos: action.payload };
   //state.merge({ loading: false, repos: action.payload.data });
 };
 
@@ -46,13 +49,13 @@ export const getReposFail = (state, action) => {
   //state.merge({ loading: false, error: 'Error getting repos info' });
 };
 
-const reducerRepos = createReducer(INITIAL_STATE, {
+const reducer = createReducer(INITIAL_STATE, {
   [Types.GET_REPOS]: getRepos,
   [Types.GET_REPOS_SUCCESS]: getReposSuccess,
   [Types.GET_REPOS_FAIL]: getReposFail,
 });
 
-export default reducerRepos;
+export default reducer;
 // export default combineReducers({ reducerRepos });
 
 // export function listRepos(user) {

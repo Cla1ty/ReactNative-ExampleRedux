@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, View, Button } from 'react-native';
 import { createStore, applyMiddleware } from 'redux';
+// import createStore from './Redux';
 import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -8,7 +9,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import axios from 'axios';
 import axiosMiddleware from 'redux-axios-middleware';
 
-import reducer from './reducerRepo';
+import reducer from './Redux/RepoRedux';
 import RepoList from './RepoList';
 import RepoDetail from './RepoDetail';
 import Profile from './Profile';
@@ -19,6 +20,7 @@ const client = axios.create({
 });
 
 const store = createStore(reducer, applyMiddleware(axiosMiddleware(client)));
+// const store = createStore();
 
 const Tab = createBottomTabNavigator();
 function TabNavigator() {

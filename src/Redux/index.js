@@ -5,10 +5,9 @@ import Repo from './RepoRedux';
 
 export default () => {
   /* ------------- Assemble The Reducers ------------- */
-  // const rootReducer = combineReducers({
-  //   Repo,
-  //   // repos: require('./RepoRedux').reducer,
-  // });
+  const rootReducer = combineReducers({
+    Repo,
+  });
 
-  return configureStore(Repo, rootSaga);
+  return configureStore(rootReducer, rootSaga);
 };

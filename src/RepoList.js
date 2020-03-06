@@ -3,6 +3,7 @@ import { Text, TouchableOpacity, FlatList, StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 
 import { Action } from './Redux/RepoRedux';
+import reactotron from 'reactotron-react-native';
 
 class RepoList extends Component {
   componentDidMount() {
@@ -43,7 +44,8 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
   // console.log(state.repos)
-  let storedRepositories = state.repos.map(repo => ({ key: repo.id, ...repo }));
+  reactotron.log(state)
+  let storedRepositories = state.Repo.repos.map(repo => ({ key: repo.id, ...repo }));
   return {
     repos: storedRepositories,
   };

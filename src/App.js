@@ -16,6 +16,8 @@ import Profile from './Profile';
 
 import ReactotronConfig from './ReactotronConfig';
 import Reactotron from 'reactotron-react-native';
+import i18n from './I18n/Index';
+import I18nJs from 'i18n-js';
 
 const client = axios.create({
   baseURL: 'https://api.github.com',
@@ -46,7 +48,7 @@ function HomeNavigator() {
         name="RepoList"
         component={RepoList}
         options={{
-          title: 'Repositories',
+          title: I18nJs.t('Repo'),
         }}
       />
       <Stack.Screen
